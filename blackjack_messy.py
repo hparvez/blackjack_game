@@ -108,7 +108,7 @@ def check_if_blackjack(card_total: int) -> bool:
 if __name__ == "__main__":
     print("""Welcome to to the Pyntheus Blackjack table! We operate
             on a 3-2 basis, meaning that for every £10 you bet, you'll get
-            £15 profit for being dealt a blackjack (or £25 total)!
+            £15 profit for being dealt a blackjack on the first hand (or £25 total)!
             In addition, we shuffle the cards every half deck.""")
     print("Opening a new deck of cards ...")
     
