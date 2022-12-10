@@ -63,7 +63,8 @@ def hit_or_stand(deck: Type[Deck], hand: Type[Hand]) -> bool:
             print("Command not recognised, try again")
 
 
-def blackjack_or_bust(hand: Type[Hand], money_pot: Type[MoneyPot]) -> bool:
+def blackjack_or_bust(hand: Type[Hand], money_pot: Type[MoneyPot],
+                      dealer_hand: Type[Hand]) -> bool:
     """
     Function to check if a hand has either blackjack or bust at any
     given point in time
@@ -71,6 +72,7 @@ def blackjack_or_bust(hand: Type[Hand], money_pot: Type[MoneyPot]) -> bool:
     Args:
         hand (Type[Hand]): the hand of cards being checked
         money_pot (Type[MoneyPot]): the current pot of money
+        dealer_hand (Type[Hand]): cards held by the dealer
 
     Returns:
         bool: True if either blackjack or bust is present, False otherwsie
@@ -80,9 +82,15 @@ def blackjack_or_bust(hand: Type[Hand], money_pot: Type[MoneyPot]) -> bool:
         money_pot.lose_bet()
         return True
     if hand.check_if_blackjack():
-        print("You won!")
-        money_pot.win_bet()
-        return True
+        # Check if dealer also has blackjack
+        print("Dealer is turning over his hidden card ...")
+        print(dealer_hand)
+        if dealer_hand.check_if_blackjack():
+            print("It's a draw! The dealer also has a blackjack!")
+        else:
+            print("You won!")
+            money_pot.win_bet()
+            return True
 
 
 def check_initial_blackjack(player_hand: Type[Hand], dealer_hand: Type[Hand],

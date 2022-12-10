@@ -57,7 +57,8 @@ while playing_round:
 
             # If player has a blackjack or bust, round ends here
             round_end = betting_functions.blackjack_or_bust(player_hand,
-                                                            players_pot)
+                                                            players_pot,
+                                                            dealer_hand)
             if round_end:
                 players_turn = False
                 playing_round = False
